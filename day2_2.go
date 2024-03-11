@@ -1,4 +1,4 @@
-package main
+package goBootcamp
 
 import (
 	"fmt"
@@ -13,7 +13,7 @@ func getRating(ch chan int, wg *sync.WaitGroup) {
 	ch <- rating
 
 }
-func main() {
+func GetAverageRating() {
 	var totalRatingSum float64 = 0
 	var wg sync.WaitGroup
 	ch := make(chan int, 200)

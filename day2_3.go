@@ -1,13 +1,11 @@
-package main
+package goBootcamp
 
 import (
-	"fmt"
 	"sync"
 	"sync/atomic"
 )
 
 func deposit(amount int64, balance *int64, mu *sync.Mutex) {
-
 	mu.Lock()
 	defer mu.Unlock()
 	atomic.AddInt64(balance, amount)
@@ -24,7 +22,7 @@ func getBalance(balance *int64, mu *sync.Mutex) int64 {
 	return atomic.LoadInt64(balance)
 }
 
-func main() {
+func GetFinalBalance() int64 {
 	var wg sync.WaitGroup
 	var balance int64
 	var mu sync.Mutex
@@ -47,5 +45,5 @@ func main() {
 
 	wg.Wait()
 
-	fmt.Println("Final Balance:", getBalance(&balance, &mu))
+	return getBalance(&balance, &mu)
 }

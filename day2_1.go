@@ -1,4 +1,4 @@
-package main
+package goBootcamp
 
 import (
 	"fmt"
@@ -19,7 +19,7 @@ func count(s string, wg *sync.WaitGroup, ch chan string) {
 	ch <- "done"
 }
 
-func main() {
+func Driver() {
 	var wg sync.WaitGroup
 	var s = []string{"quick", "brown", "fox", "lazy", "dog"}
 	ch := make(chan string, len(s))
